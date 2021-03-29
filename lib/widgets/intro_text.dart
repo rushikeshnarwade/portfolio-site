@@ -16,11 +16,12 @@ class _IntroTextState extends State<IntroText> {
   bool bvisible = false;
   String _data = "";
   bool halfcycle = false;
+  Timer timer;
 
   @override
   void initState() {
     // TODO: implement initState
-    Timer.periodic(
+    timer = Timer.periodic(
       Duration(milliseconds: 100),
       (Timer t) async {
         if (isready) changeData();
@@ -28,6 +29,13 @@ class _IntroTextState extends State<IntroText> {
     );
     // changeData();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    timer.cancel();
+    super.dispose();
   }
 
   changeData() async {
@@ -101,9 +109,10 @@ class Blinker extends StatefulWidget {
 class _BlinkerState extends State<Blinker> {
   String txt = '|';
   bool visible = true;
+  Timer timer;
   @override
   void initState() {
-    Timer.periodic(Duration(milliseconds: 250), (timer) {
+    timer = Timer.periodic(Duration(milliseconds: 250), (timer) {
       if (visible) {
         visible = false;
         setState(() {
@@ -119,6 +128,14 @@ class _BlinkerState extends State<Blinker> {
     // TODO: implement initState
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    timer.cancel();
+
+    super.dispose();
   }
 
   @override

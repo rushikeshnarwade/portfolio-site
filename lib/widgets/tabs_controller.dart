@@ -82,7 +82,9 @@ class _OneTabViewState extends State<OneTabView> {
           margin: EdgeInsets.all(8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(28),
-            color: widget.isCurrent ? Color(0xFF0563bb) : Colors.white,
+            color: (widget.isCurrent || mouseOn)
+                ? Color(0xFF0563bb)
+                : Colors.white,
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -90,13 +92,16 @@ class _OneTabViewState extends State<OneTabView> {
               Image(
                 image: AssetImage(widget.image),
                 height: 20,
-                color: widget.isCurrent ? Colors.white : Colors.black,
+                color:
+                    (widget.isCurrent || mouseOn) ? Colors.white : Colors.black,
               ),
               if (mouseOn)
                 Text(
                   widget.name,
                   style: GoogleFonts.openSans(
-                    color: widget.isCurrent ? Colors.white : Colors.black,
+                    color: (widget.isCurrent || mouseOn)
+                        ? Colors.white
+                        : Colors.black,
                     fontSize: 15,
                     fontWeight: FontWeight.w400,
                   ),

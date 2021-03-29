@@ -54,13 +54,16 @@ class _HomePageState extends State<HomePage> {
             },
             children: [
               HomeTab(),
+              HomeTab(),
+              HomeTab(),
+              HomeTab(),
             ],
           ),
           TabsController(
             currentTab: _currentPage,
             onTabPress: (num) {
               _pageController.animateTo(num,
-                  duration: Duration(seconds: 1), curve: Curves.easeIn);
+                  duration: Duration(seconds: 1), curve: Curves.bounceIn);
             },
           ),
         ],
