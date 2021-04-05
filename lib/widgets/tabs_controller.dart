@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class TabsController extends StatelessWidget {
   final int currentTab;
-  final Function(double) onTabPress;
+  final Function(int) onTabPress;
   const TabsController({this.currentTab, this.onTabPress});
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class _OneTabViewState extends State<OneTabView> {
             borderRadius: BorderRadius.circular(28),
             color: (widget.isCurrent || mouseOn)
                 ? Color(0xFF0563bb)
-                : Colors.white,
+                : Color(0xFFf2f3f5),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,

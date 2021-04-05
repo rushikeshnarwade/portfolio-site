@@ -1,3 +1,4 @@
+import 'package:first_web_app/tabs/about_tab.dart';
 import 'package:first_web_app/tabs/home_tab.dart';
 import 'package:first_web_app/widgets/tabs_controller.dart';
 import 'package:flutter/material.dart';
@@ -46,6 +47,7 @@ class _HomePageState extends State<HomePage> {
         alignment: AlignmentDirectional.centerStart,
         children: [
           PageView(
+            scrollDirection: Axis.vertical,
             controller: _pageController,
             onPageChanged: (num) {
               setState(() {
@@ -53,17 +55,18 @@ class _HomePageState extends State<HomePage> {
               });
             },
             children: [
-              HomeTab(),
-              HomeTab(),
-              HomeTab(),
+              AboutTab(),
               HomeTab(),
             ],
           ),
           TabsController(
             currentTab: _currentPage,
-            onTabPress: (num) {
-              _pageController.animateTo(num,
-                  duration: Duration(seconds: 1), curve: Curves.bounceIn);
+            onTabPress: (int num) {
+              _pageController.animateToPage(
+                num,
+                duration: Duration(milliseconds: 1000),
+                curve: Curves.easeOut,
+              );
             },
           ),
         ],

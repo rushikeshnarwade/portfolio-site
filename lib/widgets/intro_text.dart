@@ -34,9 +34,13 @@ class _IntroTextState extends State<IntroText> {
   @override
   void dispose() {
     // TODO: implement dispose
+
     timer.cancel();
+    isDisposed = true;
     super.dispose();
   }
+
+  bool isDisposed = false;
 
   changeData() async {
     isready = false;
@@ -46,9 +50,10 @@ class _IntroTextState extends State<IntroText> {
         bvisible = true;
       });
       await Future.delayed(const Duration(seconds: 2), () {
-        setState(() {
-          bvisible = false;
-        });
+        if (!isDisposed)
+          setState(() {
+            bvisible = false;
+          });
       });
     }
     if (halfcycle) {
@@ -61,10 +66,11 @@ class _IntroTextState extends State<IntroText> {
     } else {
       currentDataIndex++;
     }
-    setState(() {
-      _data = _dataList[currentData].substring(0, currentDataIndex + 1);
-      bvisible = false;
-    });
+    if (!isDisposed)
+      setState(() {
+        _data = _dataList[currentData].substring(0, currentDataIndex + 1);
+        bvisible = false;
+      });
     isready = true;
   }
 
