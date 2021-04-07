@@ -55,8 +55,8 @@ class _HomePageState extends State<HomePage> {
               });
             },
             children: [
-              AboutTab(),
               HomeTab(),
+              AboutTab(),
             ],
           ),
           TabsController(
